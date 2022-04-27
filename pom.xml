@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ids</groupId>
+		<artifactId>parent-ms</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>contact-ms</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>contact-ms</name>
+	<description>contact-ms</description>
+	<url>https://innov-ds.com</url>
+	<developers>
+		<developer>
+			<name>ZHI</name>
+		</developer>
+		<developer>
+			<name>ABD</name>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git://github.com/innovds/contact-ms.git</connection>
+		<developerConnection>scm:git:git@github.com/innovds/contact-ms.git</developerConnection>
+		<url>https://github.com/innovds/contact-ms</url>
+	</scm>
+</project>

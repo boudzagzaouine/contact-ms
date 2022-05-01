@@ -1,0 +1,105 @@
+name: Build
+on:
+  push:
+    branches:
+      - development # or the name of your main branch
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 15
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+      - name: Cache SonarQube packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          repositories: >
+            [
+              {
+                "id": "nexus3-releases",
+                "name": "nexus3-releases",
+                "url": "https://nexus3.frimakers.com/repository/maven-releases",
+                "releases": {
+                  "enabled": "true",
+                  "updatePolicy": "always",
+                  "checksumPolicy": "fail"
+                },
+                "snapshots": {
+                  "enabled": "false",
+                  "updatePolicy": "always",
+                  "checksumPolicy": "fail"
+                }
+              },
+              {
+                "id": "nexus3-snapshots",
+                "name": "nexus3-snapshots",
+                "url": "https://nexus3.frimakers.com/repository/maven-snapshots",
+                "releases": {
+                  "enabled": "false",
+                  "updatePolicy": "always",
+                  "checksumPolicy": "fail"
+                },
+                "snapshots": {
+                  "enabled": "true",
+                  "updatePolicy": "always",
+                  "checksumPolicy": "fail"
+                }
+              }
+            ]
+          servers: >
+            [
+              {
+                "id": "nexus3-releases",
+                "username": "ids",
+                "password": "ids#1234@",
+                "configuration": {
+                  "httpConfiguration": {
+                    "all": {
+                      "usePreemptive": "true"
+                    }
+                  }
+                }
+              }
+              {
+                "id": "nexus3-snapshots",
+                "username": "ids",
+                "password": "ids#1234@",
+                "configuration": {
+                  "httpConfiguration": {
+                    "all": {
+                      "usePreemptive": "true"
+                    }
+                  }
+                }
+              }
+            ]
+          properties: >
+            {
+              "altReleaseDeploymentRepository": "nexus3-releases::default::https://nexus3.frimakers.com/repository/maven-releases",
+              "altSnapshotDeploymentRepository": "nexus3-snapshots::default::https://nexus3.frimakers.com/repository/maven-snapshots"
+            }
+          output_file: .m2/settings.xml
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar

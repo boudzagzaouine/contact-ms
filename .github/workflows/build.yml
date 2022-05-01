@@ -73,13 +73,11 @@ jobs:
                     "url": "https://nexus3.frimakers.com/repository/maven-releases",
                     "releases": {
                       "enabled": "true",
-                      "updatePolicy": "always",
-                      "checksumPolicy": "fail"
+                      "updatePolicy": "always"
                     },
                     "snapshots": {
                       "enabled": "false",
-                      "updatePolicy": "always",
-                      "checksumPolicy": "fail"
+                      "updatePolicy": "always"
                     }
                   },
                   {
@@ -88,13 +86,11 @@ jobs:
                     "url": "https://nexus3.frimakers.com/repository/maven-snapshots",
                     "releases": {
                       "enabled": "false",
-                      "updatePolicy": "always",
-                      "checksumPolicy": "fail"
+                      "updatePolicy": "always"
                     },
                     "snapshots": {
                       "enabled": "true",
-                      "updatePolicy": "always",
-                      "checksumPolicy": "fail"
+                      "updatePolicy": "always"
                     }
                   }
                 ]

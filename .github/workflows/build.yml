@@ -77,7 +77,7 @@ jobs:
                     }
                   }
                 }
-              }
+              },
               {
                 "id": "nexus3-snapshots",
                 "username": "ids",

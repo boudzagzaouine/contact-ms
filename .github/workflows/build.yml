@@ -31,39 +31,6 @@ jobs:
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          repositories: >
-            [
-              {
-                "id": "nexus3-releases",
-                "name": "nexus3-releases",
-                "url": "https://nexus3.frimakers.com/repository/maven-releases",
-                "releases": {
-                  "enabled": "true",
-                  "updatePolicy": "always",
-                  "checksumPolicy": "fail"
-                },
-                "snapshots": {
-                  "enabled": "false",
-                  "updatePolicy": "always",
-                  "checksumPolicy": "fail"
-                }
-              },
-              {
-                "id": "nexus3-snapshots",
-                "name": "nexus3-snapshots",
-                "url": "https://nexus3.frimakers.com/repository/maven-snapshots",
-                "releases": {
-                  "enabled": "false",
-                  "updatePolicy": "always",
-                  "checksumPolicy": "fail"
-                },
-                "snapshots": {
-                  "enabled": "true",
-                  "updatePolicy": "always",
-                  "checksumPolicy": "fail"
-                }
-              }
-            ]
           servers: >
             [
               {
@@ -98,7 +65,39 @@ jobs:
                 "properties": {
                   "altReleaseDeploymentRepository": "nexus3-releases::default::https://nexus3.frimakers.com/repository/maven-releases",
                   "altSnapshotDeploymentRepository": "nexus3-snapshots::default::https://nexus3.frimakers.com/repository/maven-snapshots"
-                }
+                },
+                "repositories": [
+                  {
+                    "id": "nexus3-releases",
+                    "name": "nexus3-releases",
+                    "url": "https://nexus3.frimakers.com/repository/maven-releases",
+                    "releases": {
+                      "enabled": "true",
+                      "updatePolicy": "always",
+                      "checksumPolicy": "fail"
+                    },
+                    "snapshots": {
+                      "enabled": "false",
+                      "updatePolicy": "always",
+                      "checksumPolicy": "fail"
+                    }
+                  },
+                  {
+                    "id": "nexus3-snapshots",
+                    "name": "nexus3-snapshots",
+                    "url": "https://nexus3.frimakers.com/repository/maven-snapshots",
+                    "releases": {
+                      "enabled": "false",
+                      "updatePolicy": "always",
+                      "checksumPolicy": "fail"
+                    },
+                    "snapshots": {
+                      "enabled": "true",
+                      "updatePolicy": "always",
+                      "checksumPolicy": "fail"
+                    }
+                  }
+                ]
               }
             ]
           active_profiles: >

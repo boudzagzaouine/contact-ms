@@ -91,11 +91,20 @@ jobs:
                 }
               }
             ]
-          properties: >
-            {
-              "altReleaseDeploymentRepository": "nexus3-releases::default::https://nexus3.frimakers.com/repository/maven-releases",
-              "altSnapshotDeploymentRepository": "nexus3-snapshots::default::https://nexus3.frimakers.com/repository/maven-snapshots"
-            }
+          profiles: >
+            [
+              {
+                "id": "ids",
+                "properties": {
+                  "altReleaseDeploymentRepository": "nexus3-releases::default::https://nexus3.frimakers.com/repository/maven-releases",
+                  "altSnapshotDeploymentRepository": "nexus3-snapshots::default::https://nexus3.frimakers.com/repository/maven-snapshots"
+                }
+              }
+            ]
+          active_profiles: >
+            [
+              "ids"
+            ]
           output_file: .m2/settings.xml
       - name: Build and analyze
         env:

@@ -12,6 +12,15 @@
 	<name>contact-ms</name>
 	<description>contact-ms</description>
 	<url>https://innov-ds.com</url>
+	<dependencies>
+		   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.6.8</version>
+   </dependency>
+
+
+	</dependencies>
 	<developers>
 		<developer>
 			<name>ZHI</name>

@@ -27,7 +27,7 @@ public class MainContact {
 	//http://localhost:2000/v2/api-docs
 	//http://localhost:2000/swagger-ui.html
 	//IDS DATA
-	/*
+	/**
 	 drop table commande_article_commandes;drop table client_adress_livs;drop table client_commandes;drop table article_commande; drop table adress_liv;drop table commande;drop table client;
 	 */
 	public static void main(String[] args) {

@@ -1,0 +1,11 @@
+FAS##Free Alongside Ship
+FOB##Free On Board
+CFR##Cost and Freight
+CIF##Cost, Insurance and Freight
+EXW##Ex Works
+FCA##Free Carrier
+CPT##Carriage Paid To
+CIP##Cost, Insurance and Freight
+DPU##Delivered at Place Unloaded
+DAP##Delivered At Place
+DDP##Delivered Duty Paid

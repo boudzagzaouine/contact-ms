@@ -1,0 +1,6 @@
+La carte bancaire##CARTE
+Les espèces##ESPECE
+Le portefeuille électronique##E-WALLET
+Le paiement mobile##MOBILE
+Le virement bancaire##VIREMENT
+Le chèque##CHEQUE

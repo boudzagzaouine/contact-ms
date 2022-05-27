@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import com.ids.data.utils.ApplicationStarter;
 import com.ids.entity.AdressLiv;
@@ -15,7 +16,13 @@ import com.ids.repository.AdressLivRepository;
 import com.ids.repository.ArticleCommandeRepository;
 import com.ids.repository.ClientRepository;
 import com.ids.repository.CommandeRepository;
+import com.ids.repository.DeviseRepository;
+import com.ids.repository.IncotermRepository;
+import com.ids.repository.PayementModeRepository;
 import com.ids.service.ClientService;
+import com.ids.service.DeviseService;
+import com.ids.service.IcotermService;
+import com.ids.service.PayementModeService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,20 +31,24 @@ import lombok.RequiredArgsConstructor;
 public class MainContact {
 	private boolean g = true;
 
+	public static void main(String[] args) {
+		ApplicationStarter.Main(args, MainContact.class);
+	}
+
 	//http://localhost:2000/v2/api-docs
 	//http://localhost:2000/swagger-ui.html
 	//IDS DATA
 	/**
 	 drop table commande_article_commandes;drop table client_adress_livs;drop table client_commandes;drop table article_commande; drop table adress_liv;drop table commande;drop table client;
+	 
 	 */
-	public static void main(String[] args) {
-		ApplicationStarter.Main(args, MainContact.class);
-	}
 
-	//@Bean
+	@Bean
 	CommandLineRunner go(ClientRepository clientRepository, ClientService service,
 			CommandeRepository commandeRepository, AdressLivRepository adressLivRepository,
-			ArticleCommandeRepository articleCommandeRepository) {
+			ArticleCommandeRepository articleCommandeRepository, DeviseRepository deviseDao, DeviseService deviseServ,
+			IncotermRepository incotermDao, IcotermService incotermServ, PayementModeRepository payementModeDao,
+			PayementModeService payementModeServ) {
 		return a -> {
 			if (clientRepository.findAll().size() == 0)
 				clientRepository.saveAll(service.init());
@@ -109,7 +120,36 @@ public class MainContact {
 			}, 1000);
 			System.out.println("done ..... !");
 			/************************************************************************/
+			if (deviseDao.findAll().size() == 0)
+				deviseDao.saveAll(deviseServ.init());
+			/************************************************************************/
+			if (incotermDao.findAll().size() == 0)
+				incotermDao.saveAll(incotermServ.init());
+			/***********payementModeDao*************************************************************/
+			if (payementModeDao.findAll().size() == 0)
+				payementModeDao.saveAll(payementModeServ.init());
 
+		};
+	}
+
+	@Bean
+	CommandLineRunner go2(CommandeRepository comDao, ArticleCommandeRepository artDao) {
+		return a -> {
+			System.out.println("*************************************************");
+			System.out.println("*************************************************");
+			System.out.println("*************************************************");
+			System.out.println("*************************************************");
+			comDao.findAll().forEach(c -> {
+				System.out.println("--------------------------------------------");
+				if (c.getAmount() == 0) {
+
+					List<ArticleCommande> la = artDao.findByIdCommande(c.getId());
+					double amount = la.stream().map((t) -> t.getQte() * t.getPu()).reduce(0.0, Double::sum);
+					//c.setAmount(amount);
+					//comDao.save(c);
+					System.out.println("mon =" + amount + " com= " + c);
+				}
+			});
 		};
 	}
 

@@ -2,15 +2,13 @@ name: push contact-ms to Docker Hub
 
 on:
   push:
-      branches: [ cicd ]
-      
-jobs:
+    branches: [v-abd]
 
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Check Out Repo 
+      - name: Check Out Repo
         uses: actions/checkout@v2
 
       - name: Login to Docker Hub
@@ -30,7 +28,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/contact-ms:v1
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/contact-ms:5
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

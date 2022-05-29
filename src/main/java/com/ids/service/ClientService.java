@@ -15,7 +15,7 @@ public class ClientService extends AbstractService<Client, UUID> {
 
 	public List<Client> init() throws Exception {
 		List<Client> clients = new ArrayList<>();
-		File f = new File("src/main/resources/names.txt");
+		File f = new File("src/main/resources/init/names.txt");
 		Scanner sc = new Scanner(f);
 		while (sc.hasNext()) {
 			String name = sc.nextLine().trim();

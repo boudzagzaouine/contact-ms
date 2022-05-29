@@ -13,14 +13,20 @@ import com.ids.entity.AdressLiv;
 import com.ids.entity.ArticleCommande;
 import com.ids.entity.Commande;
 import com.ids.repository.AdressLivRepository;
+import com.ids.repository.ArticleClientRepository;
 import com.ids.repository.ArticleCommandeRepository;
+import com.ids.repository.ArticleRepository;
 import com.ids.repository.ClientRepository;
 import com.ids.repository.CommandeRepository;
 import com.ids.repository.DeviseRepository;
+import com.ids.repository.FournisseurRepository;
 import com.ids.repository.IncotermRepository;
 import com.ids.repository.PayementModeRepository;
+import com.ids.service.ArticleClientService;
+import com.ids.service.ArticleService;
 import com.ids.service.ClientService;
 import com.ids.service.DeviseService;
+import com.ids.service.FournisseurService;
 import com.ids.service.IcotermService;
 import com.ids.service.PayementModeService;
 
@@ -133,23 +139,26 @@ public class MainContact {
 	}
 
 	@Bean
-	CommandLineRunner go2(CommandeRepository comDao, ArticleCommandeRepository artDao) {
+	CommandLineRunner goF(FournisseurRepository frounDao, FournisseurService service) {
 		return a -> {
-			System.out.println("*************************************************");
-			System.out.println("*************************************************");
-			System.out.println("*************************************************");
-			System.out.println("*************************************************");
-			comDao.findAll().forEach(c -> {
-				System.out.println("--------------------------------------------");
-				if (c.getAmount() == 0) {
+			if (frounDao.findAll().size() == 0)
+				frounDao.saveAll(service.init());
+		};
+	}
 
-					List<ArticleCommande> la = artDao.findByIdCommande(c.getId());
-					double amount = la.stream().map((t) -> t.getQte() * t.getPu()).reduce(0.0, Double::sum);
-					//c.setAmount(amount);
-					//comDao.save(c);
-					System.out.println("mon =" + amount + " com= " + c);
-				}
-			});
+	@Bean
+	CommandLineRunner goArt(ArticleRepository artDao, ArticleService service) {
+		return a -> {
+			if (artDao.findAll().size() == 0)
+				artDao.saveAll(service.init());
+		};
+	}
+
+	@Bean
+	CommandLineRunner goArtClient(ArticleClientRepository artDao, ArticleClientService service) {
+		return a -> {
+			if (artDao.findAll().size() == 0)
+				artDao.saveAll(service.init());
 		};
 	}
 

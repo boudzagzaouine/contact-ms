@@ -15,7 +15,7 @@ public class PayementModeService extends AbstractService<PayementMode, UUID> {
 
 	public List<PayementMode> init() throws Exception {
 		List<PayementMode> payementModes = new ArrayList<>();
-		File f = new File("src/main/resources/mode_paiement.txt");
+		File f = new File("src/main/resources/init/mode_paiement.txt");
 		Scanner sc = new Scanner(f);
 		while (sc.hasNext()) {
 			String line = sc.nextLine().trim();

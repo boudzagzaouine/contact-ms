@@ -15,7 +15,7 @@ public class IcotermService extends AbstractService<Incoterm, UUID> {
 
 	public List<Incoterm> init() throws Exception {
 		List<Incoterm> incoterms = new ArrayList<>();
-		File f = new File("src/main/resources/incoterm.txt");
+		File f = new File("src/main/resources/init/incoterm.txt");
 		Scanner sc = new Scanner(f);
 		while (sc.hasNext()) {
 			String line = sc.nextLine().trim();

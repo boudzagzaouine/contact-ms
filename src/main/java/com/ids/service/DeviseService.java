@@ -15,7 +15,7 @@ public class DeviseService extends AbstractService<Devise, UUID> {
 
 	public List<Devise> init() throws Exception {
 		List<Devise> devises = new ArrayList<>();
-		File f = new File("src/main/resources/devise.txt");
+		File f = new File("src/main/resources/init/devise.txt");
 		Scanner sc = new Scanner(f);
 		while (sc.hasNext()) {
 			String line = sc.nextLine().trim();

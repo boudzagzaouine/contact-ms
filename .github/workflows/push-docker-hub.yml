@@ -28,7 +28,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/contact-ms:5
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/contact-ms:v1.0
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

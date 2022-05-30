@@ -65,8 +65,8 @@ spring:
         size-parameter: size
   datasource:
     url: jdbc:postgresql://localhost:5432/gescom?gssEncMode=disable
-    username: postgres
-    password: nori
+    username: gescom
+    password: ges_@com
     hikari:
       poolName: Hikari
       maximum-pool-size: 10

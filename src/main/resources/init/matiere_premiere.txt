@@ -1,0 +1,7 @@
+metal coco##metal##400##oo1##594f8488-cac0-4dd6-bd05-720bef34014d
+metal fofo##metal##4800##oo2##594f8488-cac0-4dd6-bd05-720bef34014d
+metal toto##metal##9400##oo3##594f8488-cac0-4dd6-bd05-720bef34014d
+cuivre fo##cuivre##2300##cc1##e47d70b2-8f66-415e-94d9-51c5d27eccb4
+cuivre to##cuivre##1300##cc2##e47d70b2-8f66-415e-94d9-51c5d27eccb4
+cuivre co##cuivre##9300##cc3##e47d70b2-8f66-415e-94d9-51c5d27eccb4
+cuivre bo##cuivre##5300##cc4##e47d70b2-8f66-415e-94d9-51c5d27eccb4

@@ -18,6 +18,7 @@ import com.ids.repository.CommandeRepository;
 import com.ids.repository.DeviseRepository;
 import com.ids.repository.FournisseurRepository;
 import com.ids.repository.IncotermRepository;
+import com.ids.repository.MatierePremiereRepository;
 import com.ids.repository.PayementModeRepository;
 import com.ids.service.ArticleClientService;
 import com.ids.service.ArticleService;
@@ -25,6 +26,7 @@ import com.ids.service.ClientService;
 import com.ids.service.DeviseService;
 import com.ids.service.FournisseurService;
 import com.ids.service.IcotermService;
+import com.ids.service.MatierePremiereService;
 import com.ids.service.PayementModeService;
 
 import lombok.RequiredArgsConstructor;
@@ -155,6 +157,14 @@ public class MainContact {
 		return a -> {
 			if (artDao.findAll().size() == 0)
 				artDao.saveAll(service.init());
+		};
+	}
+
+	@Bean
+	CommandLineRunner goMatierePremiere(MatierePremiereRepository matDao, MatierePremiereService service) {
+		return a -> {
+			if (matDao.findAll().size() == 0)
+				matDao.saveAll(service.init());
 		};
 	}
 

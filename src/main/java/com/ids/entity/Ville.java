@@ -24,5 +24,5 @@ import lombok.experimental.SuperBuilder;
 public class Ville extends EntityUuid {
 	private static final long serialVersionUID = 1L;
 	private String designation;
-	private Pays pays;
+	private String pays;
 }

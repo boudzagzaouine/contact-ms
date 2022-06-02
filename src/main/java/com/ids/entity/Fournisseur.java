@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 @Entity
 public class Fournisseur extends EntityUuid{
 public static final long serialVersionUID=1l;
-	private String raisonSociale;
+	private String design;
 	private String contact;
 	private String tel;
 	private String email;

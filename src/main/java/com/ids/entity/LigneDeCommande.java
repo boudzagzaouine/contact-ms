@@ -20,7 +20,7 @@ import lombok.AllArgsConstructor;
 @Entity
 public class LigneDeCommande extends EntityUuid{
 public static final long serialVersionUID=1l;
-	private String designation;
+	private String design;
 	private long quantite;
 	private double prix;
 	private UUID idCommandeFournisseur;

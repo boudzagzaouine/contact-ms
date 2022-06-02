@@ -21,7 +21,7 @@ public class DeviseService extends AbstractService<Devise, UUID> {
 			String line = sc.nextLine().trim();
 			String[] blocks = line.split("##");
 			Devise devise = new Devise();
-			devise.setDesignation(blocks[1]);
+			devise.setDesign(blocks[1]);
 			devise.setSymbole(blocks[2]);
 			devise.setCode_iso(blocks[3]);
 			devises.add(devise);

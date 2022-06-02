@@ -20,7 +20,7 @@ public class FournisseurService extends AbstractService<Fournisseur, UUID> {
 		while (sc.hasNext()) {
 			String word = sc.nextLine().trim();
 			Fournisseur fournisseur = new Fournisseur();
-			fournisseur.setRaisonSociale(word);
+			fournisseur.setDesign(word);
 			fournisseur.setContact(word);
 			fournisseur.setEmail(word.replace(" ", "_") + "@gmail.com");
 			fournisseurs.add(fournisseur);

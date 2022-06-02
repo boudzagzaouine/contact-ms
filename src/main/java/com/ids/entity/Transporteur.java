@@ -23,5 +23,5 @@ import lombok.experimental.SuperBuilder;
 @Where(clause = "deleted = false")
 public class Transporteur extends EntityUuid {
 	private static final long serialVersionUID = 1L;
-	private String designation;
+	private String design;
 }

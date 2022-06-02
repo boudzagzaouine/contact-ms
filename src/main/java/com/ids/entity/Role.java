@@ -20,6 +20,6 @@ import lombok.experimental.SuperBuilder;
 @Entity
 public class Role extends EntityUuid {
 	private static final long serialVersionUID = 1L;
-	private String designation;
+	private String design;
 	private Double nbrUtilisateur;
 }

@@ -7,5 +7,5 @@ import com.ids.data.repository.BaseRepository;
 import com.ids.entity.Fournisseur;
 
 public interface FournisseurRepository extends BaseRepository<Fournisseur, UUID> {
-	public List<Fournisseur> findByRaisonSociale(String raisonSociale);
+	public List<Fournisseur> findByDesign(String design);
 }

@@ -22,7 +22,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 public class MatierePremiere extends EntityUuid {
 	public static final long serialVersionUID = 1l;
-	private String designation;
+	private String design;
 	private String familleMatierePremiere;
 	private double prix;
 	private String origine;

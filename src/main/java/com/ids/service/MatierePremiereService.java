@@ -22,7 +22,7 @@ public class MatierePremiereService extends AbstractService<MatierePremiere, UUI
 			MatierePremiere matierePremiere = new MatierePremiere();
 			//metal coco##metal##400##oo1##594f8488-cac0-4dd6-bd05-720bef34014d
 			String[] word = line.split("##");
-			matierePremiere.setDesignation(word[0]);
+			matierePremiere.setDesign(word[0]);
 			matierePremiere.setFamilleMatierePremiere(word[1]);
 			matierePremiere.setPrix(Double.valueOf(word[2]));
 			matierePremiere.setOrigine(word[3]);

@@ -23,5 +23,5 @@ import lombok.experimental.SuperBuilder;
 @Where(clause = "deleted = false")
 public class Pays extends EntityUuid {
 	private static final long serialVersionUID = 1L;
-	public String designation;
+	public String design;
 }

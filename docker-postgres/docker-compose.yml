@@ -1,0 +1,16 @@
+version: '3'
+##################################valid� valid� valid� #####################
+services:
+  postgres:
+       image: postgres
+       #volumes:
+        # - postgres_data:/var/lib/postgresql/data
+       environment:
+         POSTGRES_DB: gescom
+         POSTGRES_USER: gescom
+         POSTGRES_PASSWORD: ges_@com
+       ports:
+         - 0.0.0.0:5432:5432
+networks:
+  default:
+    name: ids

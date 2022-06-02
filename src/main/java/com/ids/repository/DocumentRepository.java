@@ -7,6 +7,6 @@ import com.ids.data.repository.BaseRepository;
 import com.ids.entity.Document;
 
 public interface DocumentRepository extends BaseRepository<Document, UUID> {
-	public List<Document> findByDesignation(String designation);
+	public List<Document> findByDesign(String design);
 
 }

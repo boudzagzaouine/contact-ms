@@ -1,6 +1,8 @@
 package com.ids.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,13 +31,39 @@ public class ArticleCommandeController extends AbstractCrudController<ArticleCom
 	private ArticleCommandeService service;
 
 	@GetMapping("/idcom/{idCommande}")
-	public List<ArticleCommande> findByIdCommande(@PathVariable UUID idCommande) {
-		return repository.findByIdCommande(idCommande);
+	public Map<String, List<ArticleCommande>> ByIdCommande(@PathVariable UUID idCommande) {
+		return new HashMap<String, List<ArticleCommande>>() {
+			{
+				put("content", repository.findByIdCommande(idCommande));
+			}
+		};
+	}
+
+	@GetMapping("/parent/{idCommande}")
+	public Map<String, List<ArticleCommande>> ByIdCommande2(@PathVariable UUID idCommande) {
+		return new HashMap<String, List<ArticleCommande>>() {
+			{
+				put("content", repository.findByIdCommande(idCommande));
+			}
+		};
 	}
 
 	@GetMapping("/design/{design}")
-	public List<ArticleCommande> findByIdDesign(@PathVariable String design) {
-		return repository.findByDesign(design);
+	public Map<String, List<ArticleCommande>> ByIdDesign(@PathVariable String design) {
+		return new HashMap<String, List<ArticleCommande>>() {
+			{
+				put("content", repository.findByDesign(design));
+			}
+		};
+	}
+
+	@GetMapping("/parent/{design}")
+	public Map<String, List<ArticleCommande>> ByIdDesign2(@PathVariable String design) {
+		return new HashMap<String, List<ArticleCommande>>() {
+			{
+				put("content", repository.findByDesign(design));
+			}
+		};
 	}
 
 	@DeleteMapping("/del/{id}")
@@ -53,9 +81,10 @@ public class ArticleCommandeController extends AbstractCrudController<ArticleCom
 		service.save(articleCommande);
 	}
 
-	/*@PutMapping("/put/{id}")
-	public void onEdit(@RequestBody ArticleCommande articleCommande, @PathVariable UUID id) {
-		System.out.println("salamo alaykom edit art=" + articleCommande);
-		service.onEdit(articleCommande, id);
-	}*/
+	/*
+	 * @PutMapping("/put/{id}") public void onEdit(@RequestBody ArticleCommande
+	 * articleCommande, @PathVariable UUID id) {
+	 * System.out.println("salamo alaykom edit art=" + articleCommande);
+	 * service.onEdit(articleCommande, id); }
+	 */
 }

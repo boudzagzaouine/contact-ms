@@ -1,6 +1,8 @@
 package com.ids.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,12 +25,20 @@ public class ClientController extends AbstractCrudController<Client, UUID> {
 	public ClientRepository repository;
 
 	@GetMapping("/all")
-	public List<Client> all() {
-		return repository.findAsc();
+	public Map<String, List<Client>> all() {
+		return new HashMap<String, List<Client>>() {
+			{
+				put("content", repository.findAsc());
+			}
+		};
 	}
 
 	@GetMapping("/ids")
-	public List<String> getIds() {
-		return repository.getids();
+	public Map<String, List<String>> getIds() {
+		return new HashMap<String, List<String>>() {
+			{
+				put("content", repository.getids());
+			}
+		};
 	}
 }

@@ -1,6 +1,8 @@
 package com.ids.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,28 +27,55 @@ public class CommandeController extends AbstractCrudController<Commande, UUID> {
 	private CommandeRepository repository;
 	private CommandeService service;
 
-	@GetMapping("/allcoms")
-	public List<Commande> all() {
-		return repository.findAsc();
+	@GetMapping("/all")
+	public Map<String, List<Commande>> all() {
+		return new HashMap<String, List<Commande>>() {
+			{
+				put("content", repository.findAsc());
+			}
+		};
 	}
 
 	@GetMapping("/season/{saison}")
-	public List<Commande> BySeason(@PathVariable String saison) {
-		return repository.findBySeason(saison);
+	public Map<String, List<Commande>> BySeason(@PathVariable String saison) {
+		return new HashMap<String, List<Commande>>() {
+			{
+				put("content", repository.findBySeason(saison));
+			}
+		};
+	}
+
+	@GetMapping("/season/{saison}")
+	public Map<String, List<Commande>> BySeason2(@PathVariable String saison) {
+		return new HashMap<String, List<Commande>>() {
+			{
+				put("parent", repository.findBySeason(saison));
+			}
+		};
 	}
 
 	@GetMapping("/idclient/{idClient}")
-	public List<Commande> ByIdClient(@PathVariable UUID idClient) {
-		return repository.findByIdClient(idClient);
+	public Map<String, List<Commande>> ByIdClient(@PathVariable UUID idClient) {
+		return new HashMap<String, List<Commande>>() {
+			{
+				put("content", repository.findByIdClient(idClient));
+			}
+		};
 	}
 
-	/*@PostMapping("/post")
-	public void onSave(@RequestBody Commande commande) {
-		service.onSave(commande);
+	@GetMapping("/idclient/{idClient}")
+	public Map<String, List<Commande>> ByIdClient2(@PathVariable UUID idClient) {
+		return new HashMap<String, List<Commande>>() {
+			{
+				put("parent", repository.findByIdClient(idClient));
+			}
+		};
 	}
-	
-	@PutMapping("/put/{id}")
-	public void onEdit(@RequestBody Commande commande, @PathVariable UUID id) {
-		service.onEdit(commande, id);
-	}*/
+	/*
+	 * @PostMapping("/post") public void onSave(@RequestBody Commande commande) {
+	 * service.onSave(commande); }
+	 * 
+	 * @PutMapping("/put/{id}") public void onEdit(@RequestBody Commande
+	 * commande, @PathVariable UUID id) { service.onEdit(commande, id); }
+	 */
 }

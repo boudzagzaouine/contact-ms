@@ -1,6 +1,8 @@
 package com.ids.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,8 +31,20 @@ public class AdressLivController extends AbstractCrudController<AdressLiv, UUID>
 	private AdressLivService service;
 
 	@GetMapping("/idclient/{idClient}")
-	public List<AdressLiv> ByIdClient(@PathVariable UUID idClient) {
-		return repository.findByIdClient(idClient);
+	public Map<String, List<AdressLiv>> ByIdClient(@PathVariable UUID idClient) {
+		return new HashMap<String, List<AdressLiv>>() {
+			{
+				put("content", repository.findByIdClient(idClient));
+			}
+		};
+	}
+	@GetMapping("/parent/{idClient}")
+	public Map<String, List<AdressLiv>> ByIdClient2(@PathVariable UUID idClient) {
+		return new HashMap<String, List<AdressLiv>>() {
+			{
+				put("content", repository.findByIdClient(idClient));
+			}
+		};
 	}
 
 	@PostMapping("/post")

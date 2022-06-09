@@ -45,11 +45,11 @@ public class CommandeController extends AbstractCrudController<Commande, UUID> {
 		};
 	}
 
-	@GetMapping("/season/{saison}")
+	@GetMapping("/parent/{saison}")
 	public Map<String, List<Commande>> BySeason2(@PathVariable String saison) {
 		return new HashMap<String, List<Commande>>() {
 			{
-				put("parent", repository.findBySeason(saison));
+				put("content", repository.findBySeason(saison));
 			}
 		};
 	}
@@ -63,11 +63,11 @@ public class CommandeController extends AbstractCrudController<Commande, UUID> {
 		};
 	}
 
-	@GetMapping("/idclient/{idClient}")
+	@GetMapping("/parent/{idClient}")
 	public Map<String, List<Commande>> ByIdClient2(@PathVariable UUID idClient) {
 		return new HashMap<String, List<Commande>>() {
 			{
-				put("parent", repository.findByIdClient(idClient));
+				put("content", repository.findByIdClient(idClient));
 			}
 		};
 	}

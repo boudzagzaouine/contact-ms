@@ -65,8 +65,8 @@ spring:
         size-parameter: size
   datasource:
     url: jdbc:postgresql://localhost:5432/gescom?gssEncMode=disable
-    username: gescom
-    password: ges_@com
+    username: postgres
+    password: admin
     hikari:
       poolName: Hikari
       maximum-pool-size: 10
@@ -88,6 +88,7 @@ spring:
     open-in-view: true
     properties:
       hibernate:
+        dialect : org.hibernate.dialect.PostgreSQL94Dialect
         jdbc.time_zone: UTC
         id.new_generator_mappings: true
        # connection.provider_disables_autocommit: true

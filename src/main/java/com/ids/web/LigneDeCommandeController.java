@@ -35,7 +35,7 @@ public class LigneDeCommandeController extends AbstractCrudController<LigneDeCom
 		};
 	}
 
-	@GetMapping("/idcommandefournisseur/{idCommandeFournisseur}")
+	@GetMapping("/parent/{idCommandeFournisseur}")
 	public Map<String, List<LigneDeCommande>> ByIdCommandeFournisseur2(@PathVariable UUID idCommandeFournisseur) {
 		return new HashMap<String, List<LigneDeCommande>>() {
 			{

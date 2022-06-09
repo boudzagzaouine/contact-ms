@@ -10,9 +10,8 @@ import org.hibernate.annotations.Where;
 import com.ids.data.entity.EntityUuid;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
@@ -23,18 +22,13 @@ import lombok.experimental.SuperBuilder;
 @ToString(callSuper = true)
 @Entity
 @Where(clause = "deleted = false")
-@Setter
-@Getter
-public class Facture extends EntityUuid {
+@Data
+public class Journal extends EntityUuid {
 	private static final long serialVersionUID = 1L;
-	public double NumFacture;
+	public UUID numeroFacture;
 	private UUID client;
-	private double NumColisage;
+	private Long Entree;
+	private Long Sortie;
 	private Date date;
-	private double Montant;
-	private double Reduction;
-	private double Tva;
-	private double Total;
-	private String payement;
-
+	private String Type;
 }

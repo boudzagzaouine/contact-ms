@@ -20,9 +20,10 @@ public class AvoirService extends AbstractService<Avoir, UUID> {
 			UUID NumFacture = null;
 			UUID Client = null;
 			double Montant = sc.nextDouble();
+			double numeroAvoir = sc.nextDouble();
 			Avoir avoir = new Avoir();
-
 			avoir.setMontant(Montant);
+			avoir.setNumeroAvoir(numeroAvoir);
 			avoir.setClient(Client);
 			avoir.setNumeroFacture(NumFacture);
 			avoirs.add(avoir);

@@ -40,12 +40,13 @@ public class MainContact {
 		ApplicationStarter.Main(args, MainContact.class);
 	}
 
-	//http://localhost:2000/v2/api-docs
-	//http://localhost:2000/swagger-ui.html
-	//IDS DATA
+	// http://localhost:2000/v2/api-docs
+	// http://localhost:2000/swagger-ui.html
+	// IDS DATA
 	/**
-	 drop table commande_article_commandes;drop table client_adress_livs;drop table client_commandes;drop table article_commande; drop table adress_liv;drop table commande;drop table client;
-	 
+	 * drop table commande_article_commandes;drop table client_adress_livs;drop
+	 * table client_commandes;drop table article_commande; drop table
+	 * adress_liv;drop table commande;drop table client;
 	 */
 
 	@Bean
@@ -58,24 +59,15 @@ public class MainContact {
 			if (clientRepository.findAll().size() == 0)
 				clientRepository.saveAll(service.init());
 			/************************************************************************
-			new java.util.Timer().schedule(new java.util.TimerTask() {
-				@Override
-				public void run() {
-					try {
-						if (commandeRepository.findAll().size() == 0) {
-							clientRepository.findAll().forEach(l -> {
-								for (int i = 0; i < 3; i++) {
-									int k = rn(7, 8000);
-									Commande cm = new Commande();
-									cm.setDate(new Date());
-									cm.setSeason("saison " + k);
-									cm.setAmount(k * 2);
-									cm.setIdClient(l.getId());
-									commandeRepository.save(cm);
-								}
-							});
-						}
-						********************************************************************************************************/
+			 * new java.util.Timer().schedule(new java.util.TimerTask() {
+			 * 
+			 * @Override public void run() { try { if (commandeRepository.findAll().size()
+			 *           == 0) { clientRepository.findAll().forEach(l -> { for (int i = 0; i
+			 *           < 3; i++) { int k = rn(7, 8000); Commande cm = new Commande();
+			 *           cm.setDate(new Date()); cm.setSeason("saison " + k); cm.setAmount(k
+			 *           * 2); cm.setIdClient(l.getId()); commandeRepository.save(cm); } });
+			 *           }
+			 ********************************************************************************************************/
 			if (adressLivRepository.findAll().size() == 0 && g) {
 				String[] countr = new String[] { "maroc#rabat", "maroc#casa", "maroc#fes", "maroc#oujda",
 						"maroc#tanger", "maroc#titouane", "maroc#araiche", "maroc#marakesh", "maroc#alyoune",
@@ -102,34 +94,23 @@ public class MainContact {
 				});
 			}
 			/****************************************************************************************
-			if (articleCommandeRepository.findAll().size() == 0) {
-				String[] countr = new String[] { "pc", "tablette", "ecran", "machine a laver",
-						"smarte phone", "tv", "frigirateur" };
-				commandeRepository.findAll().forEach(cl -> {
-					for (int i = 0; i < 3; i++) {
-						ArticleCommande al = new ArticleCommande();
-						al.setDesign(countr[rn(0, countr.length)]);
-						al.setQte(rn(1, 500));
-						al.setPu(rn(200, 50000));
-						al.setPortion("***");
-						al.setIdCommande(cl.getId());
-						articleCommandeRepository.save(al);
-					}
-				});
-			}
-			} catch (Exception e) {
-			e.printStackTrace();
-			}
-			}
-			}, 1000);
-			System.out.println("done ..... !");
-			************************************************************************/
+			 * if (articleCommandeRepository.findAll().size() == 0) { String[] countr = new
+			 * String[] { "pc", "tablette", "ecran", "machine a laver", "smarte phone",
+			 * "tv", "frigirateur" }; commandeRepository.findAll().forEach(cl -> { for (int
+			 * i = 0; i < 3; i++) { ArticleCommande al = new ArticleCommande();
+			 * al.setDesign(countr[rn(0, countr.length)]); al.setQte(rn(1, 500));
+			 * al.setPu(rn(200, 50000)); al.setPortion("***"); al.setIdCommande(cl.getId());
+			 * articleCommandeRepository.save(al); } }); } } catch (Exception e) {
+			 * e.printStackTrace(); } } }, 1000); System.out.println("done ..... !");
+			 ************************************************************************/
 			if (deviseDao.findAll().size() == 0)
 				deviseDao.saveAll(deviseServ.init());
 			/************************************************************************/
 			if (incotermDao.findAll().size() == 0)
 				incotermDao.saveAll(incotermServ.init());
-			/***********payementModeDao*************************************************************/
+			/***********
+			 * payementModeDao
+			 *************************************************************/
 			if (payementModeDao.findAll().size() == 0)
 				payementModeDao.saveAll(payementModeServ.init());
 

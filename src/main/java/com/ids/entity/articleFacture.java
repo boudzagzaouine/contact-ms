@@ -1,11 +1,6 @@
 package com.ids.entity;
 
-import java.sql.Date;
-import java.util.List;
-import java.util.UUID;
-
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Where;
 
@@ -26,16 +21,11 @@ import lombok.experimental.SuperBuilder;
 @ToString(callSuper = true)
 @Entity
 @Where(clause = "deleted = false")
-public class Avoir extends EntityUuid {
+public class articleFacture extends EntityUuid {
 
 	private static final long serialVersionUID = 1L;
-	private Date date;
-	private double montant;
-	private UUID numeroFacture;
-	private UUID client;
-	private double numeroAvoir;
-
-	@OneToMany
-	private List<Client> clients;
-
+	private double codeArticle;
+	private double prixUnitaire;
+	private double quantité;
+	private String designation;
 }

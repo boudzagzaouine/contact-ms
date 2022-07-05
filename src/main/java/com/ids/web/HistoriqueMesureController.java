@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ids.data.web.AbstractCrudController;
-import com.ids.entity.articleFacture;
+import com.ids.entity.HistoriqueMesure;
 
 import lombok.AllArgsConstructor;
 
-//http://localhost:1000/api/v1/articleFactures
+//http://localhost:1000/api/v1/HistoriqueMesure
 @RestController
-@RequestMapping("/api/v1/articleFactures")
+@RequestMapping("/api/v1/HistoriqueMesure")
 @CrossOrigin("*")
 @AllArgsConstructor
-public class ArticleFactureController extends AbstractCrudController<articleFacture, UUID> {
+public class HistoriqueMesureController extends AbstractCrudController<HistoriqueMesure, UUID> {
 
 }
